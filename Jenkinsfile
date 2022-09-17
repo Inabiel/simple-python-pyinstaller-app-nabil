@@ -28,8 +28,8 @@ node{
         }
         stage('Deliver'){
             dir('code'){
-                docker.image('cdrx/pyinstaller-linux:python2').inside("--entrypoint=''"){
-                    sh 'PyInstaller --onefile sources/add2vals.py'
+                docker.image('cdrx/pyinstaller-linux:python2'){
+                    sh 'pyinstaller --onefile sources/add2vals.py'
                 }
             }            
         }
