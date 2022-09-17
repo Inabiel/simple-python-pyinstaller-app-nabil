@@ -29,6 +29,7 @@ node{
         stage('Deliver'){
             dir('code'){
                 sh "docker run --rm -v '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
+                sh "ls -la"
             }            
         }
     }
