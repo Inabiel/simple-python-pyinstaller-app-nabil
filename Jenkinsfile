@@ -1,16 +1,16 @@
 node{
     try{
         stage('Build'){
-            docker.image('python:2-alpine'){
+            docker.image('python:2-alpine').inside{
                 sh 'python -m py_compile sources/add2vals.py sources/calc.py'
             }
         }
         stage('Test'){
-            docker.image('qnib/pytest'){
+            docker.image('qnib/pytest').inside{
                 sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
             }
         }
-        stage('Deliver'){
+        stage('Deliver').inside{
             docker.image('cdrx/pyinstaller-linux:python2'){
                 sh 'pyinstaller --onefile sources/add2vals.py'
             }
