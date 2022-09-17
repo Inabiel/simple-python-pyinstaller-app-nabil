@@ -2,7 +2,7 @@ node{
     try{
         stage('Checkout') {
               echo "Create directory for source code"
-              sh 'sudo rm code -r && echo "OK" || echo "FAIL"'
+              sh 'rm code -r && echo "OK" || echo "FAIL"'
               sh "mkdir code"
               dir('code') {
                 checkout([$class: 'GitSCM', branches: [
@@ -43,7 +43,7 @@ node{
         dir('code'){
             sh "ls -la"
             junit 'test-reports/results.xml'
-            archiveArtifacts 'dist/add2vals'
+            archiveArtifacts 'sources/dist/add2vals'
             deleteDir()
         }
     }
