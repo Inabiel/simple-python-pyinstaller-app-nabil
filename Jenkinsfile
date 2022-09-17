@@ -29,7 +29,9 @@ node{
         stage('Deliver'){
             dir('code'){
                 docker.image('cdrx/pyinstaller-linux:python2').inside{
+                    echo("test")
                     sh 'pyinstaller -F sources/add2vals.py'
+                    echo("reaches")
                 }
             }            
         }
