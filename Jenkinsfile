@@ -2,7 +2,6 @@ node{
     try{
         stage('Checkout') {
               echo "Create directory for source code"
-              sh 'rm code -r && echo "OK" || echo "FAIL"'
               sh "mkdir code"
               dir('code') {
                 checkout([$class: 'GitSCM', branches: [
@@ -36,7 +35,6 @@ node{
     catch(e){
        stage('Error') {
                 echo "${e}"
-                sh "rm /var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/ -rf"
         }
     }
     finally{
@@ -44,9 +42,8 @@ node{
             sh "ls -la"
             junit 'test-reports/results.xml'
             archiveArtifacts 'sources/dist/add2vals'
-            sh "rm /var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/ -rf"
         }
     }
 }
 
-//I cannot delete the built binary by DeleteDir() so i was forced to use docker exec :(
+//I still cannot delete the artifact, any help? :(
