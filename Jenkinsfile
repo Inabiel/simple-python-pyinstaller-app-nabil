@@ -20,7 +20,5 @@ node{
         echo(e)
     }
     finally{
-        junit 'test-reports/results.xml'
-        archiveArtifacts 'dist/add2vals'
     }
 }
