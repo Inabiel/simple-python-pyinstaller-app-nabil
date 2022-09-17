@@ -39,6 +39,7 @@ node{
     }
     finally{
         dir('code'){
+            sh "ls -la"
             junit 'test-reports/results.xml'
             archiveArtifacts 'dist/add2vals'
         }
