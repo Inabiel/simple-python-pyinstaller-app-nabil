@@ -29,14 +29,14 @@ node{
         stage('Deliver'){
             dir('code'){
                 sh "docker run --rm -v '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
-                sh "ls -la"
+                sh "sudo chown -R <user> ${WORKSPACE}"
             }            
         }
     }
     catch(e){
        stage('Error') {
                 echo "${e}"
-                deleteDir()
+                sh "docker exec -it -u root jenkins-blueocean rm '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code' -r"
         }
     }
     finally{
@@ -44,7 +44,7 @@ node{
             sh "ls -la"
             junit 'test-reports/results.xml'
             archiveArtifacts 'sources/dist/add2vals'
-            deleteDir()
+            sh "docker exec -it -u root jenkins-blueocean rm '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code' -r"
         }
     }
 }
