@@ -5,7 +5,7 @@ node{
               sh "mkdir code"
               dir('code') {
                 checkout([$class: 'GitSCM', branches: [
-                  [name: "develop"]
+                  [name: "master"]
                 ], userRemoteConfigs: [
                   [url: "https://github.com/Inabiel/simple-python-pyinstaller-app-nabil.git"]
                 ]])
