@@ -36,7 +36,10 @@ node{
         }
     }
     catch(e){
-        echo(e)
+       stage('Error') {
+                echo "${e}"
+                deleteDir()
+        }
     }
     finally{
         dir('code'){
