@@ -38,7 +38,9 @@ node{
         echo(e)
     }
     finally{
-        junit 'code/test-reports/results.xml'
-        archiveArtifacts 'code/dist/add2vals'
+        dir('code'){
+            junit 'test-reports/results.xml'
+            archiveArtifacts 'dist/add2vals'
+        }
     }
 }
