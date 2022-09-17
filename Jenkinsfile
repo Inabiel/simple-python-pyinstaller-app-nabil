@@ -36,7 +36,7 @@ node{
     catch(e){
        stage('Error') {
                 echo "${e}"
-                sh "docker exec -it -u root jenkins-blueocean rm '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code' -r"
+                sh "rm /var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/ -rf"
         }
     }
     finally{
@@ -44,7 +44,9 @@ node{
             sh "ls -la"
             junit 'test-reports/results.xml'
             archiveArtifacts 'sources/dist/add2vals'
-            sh "docker exec -it -u root jenkins-blueocean rm '/var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code' -r"
+            sh "rm /var/jenkins_home/jobs/submission-cicd-pipeline-nabiel/workspace/code/ -rf"
         }
     }
 }
+
+//I cannot delete the built binary by DeleteDir() so i was forced to use docker exec :(
