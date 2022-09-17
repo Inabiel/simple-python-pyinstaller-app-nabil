@@ -29,7 +29,7 @@ node{
         stage('Deliver'){
             dir('code'){
                 sh "ls -la"
-                sh "docker run -v ${(pwd)}:/src cdrx/pyinstaller-linux:python2 'pyinstaller -F sources/add2vals.py'"
+                sh "docker run cdrx/pyinstaller-linux:python2 'pyinstaller -F sources/add2vals.py'"
             }            
         }
     }
