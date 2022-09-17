@@ -35,6 +35,7 @@ node{
     catch(e){
        stage('Error') {
                 echo "${e}"
+                sh "ls -la"
                 deleteDir()
         }
     }
