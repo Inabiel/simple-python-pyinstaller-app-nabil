@@ -2,7 +2,7 @@ node{
     try{
         stage('Checkout') {
               echo "Create directory for source code"
-              sh 'rm code && echo "OK" || echo "FAIL"'
+              sh 'rm code -r && echo "OK" || echo "FAIL"'
               sh "mkdir code"
               dir('code') {
                 checkout([$class: 'GitSCM', branches: [
