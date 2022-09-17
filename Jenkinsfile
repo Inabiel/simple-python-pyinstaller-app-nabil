@@ -15,27 +15,26 @@ node{
         stage('Build'){
             dir('code'){
                 docker.image('python:2-alpine').inside{
-                    sh 'python -m py_compile src/sources/add2vals.py src/sources/calc.py'
+                    sh 'python -m py_compile sources/add2vals.py sources/calc.py'
                 }
             }         
         }
         stage('Test'){
             dir('code'){
                 docker.image('qnib/pytest').inside{
-                    sh 'py.test --verbose --junit-xml test-reports/results.xml src/sources/test_calc.py'
+                    sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
                 }
             }        
         }
         stage('Deliver'){
             dir('code'){
-                sh "docker run --rm -v '$PWD/sources:/src' cdrx/pyinstaller-linux:python2 'pyinstaller -F src/sources/add2vals.py'"
+                    sh "docker run --rm -v '$(pwd)/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
             }            
         }
     }
     catch(e){
        stage('Error') {
                 echo "${e}"
-                sh "ls -la"
                 deleteDir()
         }
     }
