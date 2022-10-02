@@ -3,6 +3,7 @@ node{
         stage('Checkout') {
               echo "Create directory for source code"
               sh "mkdir code"
+              sh "pwd"
               dir('code') {
                 checkout([$class: 'GitSCM', branches: [
                   [name: "master"]
@@ -11,7 +12,7 @@ node{
                 ]])
               }
             }
-        stage('Build'){
+        stage('Build'){ 
             dir('code'){
                 docker.image('python:2-alpine').inside{
                     sh 'python -m py_compile sources/add2vals.py sources/calc.py'
