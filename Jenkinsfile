@@ -66,7 +66,7 @@ node{
                 }
         }
         stage('Deliver'){
-                sh "docker run --rm -v '/var/jenkins_home/jobs/Python App/workspace/code/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
+                sh "docker run --rm -v '/var/jenkins_home/workspace/Python App/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
         }
     }
     catch(e){
