@@ -19,21 +19,22 @@ node{
         }
         stage('Build Artifact'){
                 sh "docker run --rm -v '/var/jenkins_home/workspace/Python App/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
+                sh "ls sources"
         }
         stage("Approval"){
             input("Lanjutkan ke tahap Deploy?")
         }
         stage("Deploy"){
-                 sh '''
-                    ls -la
-                    heroku git:remote -a jenkins-python-flask
-                    git remote -v
-                    git fetch heroku 
-                    git fetch origin
-                    git branch -a
-                    git push heroku HEAD:master --force
-                 '''
-                 sleep(60)
+                //  sh '''
+                //     ls -la
+                //     heroku git:remote -a jenkins-python-flask
+                //     git remote -v
+                //     git fetch heroku 
+                //     git fetch origin
+                //     git branch -a
+                //     git push heroku HEAD:master --force
+                //  '''
+                //  sleep(60)
         }
 
     }
