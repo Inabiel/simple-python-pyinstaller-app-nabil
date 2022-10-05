@@ -78,8 +78,6 @@ node{
                     git config --global user.email "nizzullah@gmail.com"
                     git config --global user.name "Nabil Izzullah"
                     git remote -v
-                    git add .
-                    git commit -m "commit"
                     git push heroku main
                  '''
             }
