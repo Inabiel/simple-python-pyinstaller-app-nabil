@@ -74,7 +74,7 @@ node{
         stage("Deploy"){
                  sh '''
                     heroku git:remote -a jenkins-python-flask
-                    git push heroku master
+                    git push heroku refs/head/master
                  '''
         }
 
