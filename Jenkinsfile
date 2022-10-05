@@ -77,7 +77,7 @@ node{
                     git remote -v
                     git fetch heroku
                     git branch -a
-                    git status
+                    git push remote/heroku/master
                  '''
         }
 
