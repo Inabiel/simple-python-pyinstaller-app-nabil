@@ -75,7 +75,7 @@ node{
           withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]) {
                  sh '''
                     heroku git:remote -a jenkins-python-flask
-                    git config --global user.email "nizzullah@gmail.com"
+                    git config --global user.email "nabiel.p@students.amikom.ac.id"
                     git config --global user.name "Nabil Izzullah"
                     git push --force heroku master
                  '''
