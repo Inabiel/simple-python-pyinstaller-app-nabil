@@ -20,10 +20,10 @@ def handle_calc():
     try:
         num1=float(request.args.get('num1'))
         num2=float(request.args.get('num2'))            
-        sys = os.popen(f"./dist/add2vals {num1} {num2}").read()
+        sys = os.popen(f"./sources/dist/add2vals {num1} {num2}").read()
         return jsonify(
             err="none",
-            test=sys
+            test=sys.strip('\n')
         )
     except ValueError:
         return jsonify(
