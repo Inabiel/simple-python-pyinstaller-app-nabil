@@ -80,7 +80,7 @@ node{
                     git remote -v
                     git add .
                     git commit -m "commit"
-                    git push heroku main"
+                    git push heroku main
                  '''
             }
         }
