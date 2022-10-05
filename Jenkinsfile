@@ -74,8 +74,8 @@ node{
         stage("Deploy"){
                  sh '''
                     heroku git:remote -a jenkins-python-flask
-                    git config --global user.email "nabiel.p@students.amikom.ac.id"
-                    git config --global user.name "Nabil Izzullah"
+                    git add .
+                    git commit -m "adding file"
                     git push --force heroku master
                  '''
         }
