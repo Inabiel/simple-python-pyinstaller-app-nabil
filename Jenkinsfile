@@ -31,7 +31,7 @@ node{
                     git remote -v
                     git fetch heroku 
                     git fetch origin
-                    git add .
+                    git add -A
                     git commit -m "adding artifacts"
                     git push heroku HEAD:master --force
                  '''
