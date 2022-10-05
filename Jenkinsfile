@@ -73,7 +73,7 @@ node{
         // }
         stage("Deploy"){
           withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]) {
-                 
+                 echo "$TOKEN"
             }
         }
 
