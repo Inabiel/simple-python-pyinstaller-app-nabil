@@ -55,19 +55,27 @@ node{
                   [url: "https://github.com/Inabiel/simple-python-pyinstaller-app-nabil.git"]
                 ]])
             }
-        stage('Build'){ 
-                docker.image('python:2-alpine').inside{
-                    sh 'python -m py_compile sources/add2vals.py sources/calc.py'
-                }
+        // stage('Build'){ 
+        //         docker.image('python:2-alpine').inside{
+        //             sh 'python -m py_compile sources/add2vals.py sources/calc.py'
+        //         }
+        // }
+        // stage('Test'){
+        //         docker.image('qnib/pytest').inside{
+        //             sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
+        //         }
+        // }
+        // stage('Build Artifact'){
+        //         sh "docker run --rm -v '/var/jenkins_home/workspace/Python App/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
+        // }
+        // stage("Approval"){
+        //     input("Lanjutkan ke tahap Deploy?")
+        // }
+        stage("Deploy"){
+            sh "heroku git:remote -a jenkins-python-flask"
+            sleep(60)
         }
-        stage('Test'){
-                docker.image('qnib/pytest').inside{
-                    sh 'py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py'
-                }
-        }
-        stage('Deliver'){
-                sh "docker run --rm -v '/var/jenkins_home/workspace/Python App/sources:/src' 'cdrx/pyinstaller-linux:python2' 'pyinstaller -F add2vals.py'"
-        }
+
     }
     catch(e){
        stage('Error') {
