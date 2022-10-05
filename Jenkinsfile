@@ -74,6 +74,10 @@ node{
         stage("Deploy"){
           withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]) {
                  sh "HEROKU_API_KEY=$TOKEN heroku git:remote -a jenkins-python-flask"
+                 sh '''
+                    git config --global user.email "nizzullah@gmail.com"
+                    git config --global user.name "Nabil Izzullah"
+                 '''
                  sh "git remote -v"
                  sh 'git commit -m "commit"'
                  sh "git push heroku main"
