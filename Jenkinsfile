@@ -78,7 +78,7 @@ node{
                     git fetch heroku 
                     git fetch origin
                     git branch -a
-                    git push --force remotes/heroku/master
+                    git push heroku HEAD:master --force
                  '''
         }
 
