@@ -72,9 +72,7 @@ node{
         //     input("Lanjutkan ke tahap Deploy?")
         // }
         stage("Deploy"){
-            withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]
-            {
-            })
+          sh "he"
         }
 
     }
