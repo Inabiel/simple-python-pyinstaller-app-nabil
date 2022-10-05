@@ -25,6 +25,7 @@ node{
         }
         stage("Deploy"){
                  sh '''
+                    ls -la
                     heroku git:remote -a jenkins-python-flask
                     git remote -v
                     git fetch heroku 
