@@ -74,7 +74,6 @@ node{
         stage("Deploy"){
             withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]
             {
-                sh '''HEROKU_API_KEY="$token" heroku git:remote -a jenkins-python-flask'''
             })
         }
 
