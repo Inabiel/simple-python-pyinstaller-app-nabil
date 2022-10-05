@@ -73,7 +73,13 @@ node{
         // }
         stage("Deploy"){
           withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]) {
-                 sh '''heroku auth:token'''
+                 sh '''
+                    heroku git:remote -a jenkins-python-flask
+                    git config --global user.email "nizzullah@gmail.com"
+                    git config --global user.name "Nabil Izzullah"
+                    git remote -v
+                    git push heroku HEAD:master
+                 '''
             }
         }
 
@@ -92,9 +98,3 @@ node{
 
 
 //I still cannot delete the artifact, any help? :(
-                    // HEROKU_API_KEY=$TOKEN 
-                    // heroku git:remote -a jenkins-python-flask
-                    // git config --global user.email "nizzullah@gmail.com"
-                    // git config --global user.name "Nabil Izzullah"
-                    // git remote -v
-                    // git push heroku HEAD:master
