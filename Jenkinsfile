@@ -72,8 +72,14 @@ node{
         //     input("Lanjutkan ke tahap Deploy?")
         // }
         stage("Deploy"){
-            sh "heroku git:remote -a jenkins-python-flask"
-            sleep(60)
+            withCredentials([
+                string(
+                    credentialsId: 'heroku-api'
+                )
+            ]{
+                sh "heroku git:remote -a jenkins-python-flask"
+                sleep(60)
+            })
         }
 
     }
