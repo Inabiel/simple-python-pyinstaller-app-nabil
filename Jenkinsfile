@@ -75,8 +75,9 @@ node{
                  sh '''
                     heroku git:remote -a jenkins-python-flask
                     git remote -v
-                    git status
+                    git fetch heroku
                     git branch -a
+                    git status
                  '''
         }
 
