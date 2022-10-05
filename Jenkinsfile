@@ -77,8 +77,6 @@ node{
                     heroku git:remote -a jenkins-python-flask
                     git config --global user.email "nizzullah@gmail.com"
                     git config --global user.name "Nabil Izzullah"
-                    git fetch
-                    git checkout heroku/master
                     git push --force heroku master
                  '''
             }
