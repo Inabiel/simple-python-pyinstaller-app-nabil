@@ -25,16 +25,15 @@ node{
             input("Lanjutkan ke tahap Deploy?")
         }
         stage("Deploy"){
-                //  sh '''
-                //     ls -la
-                //     heroku git:remote -a jenkins-python-flask
-                //     git remote -v
-                //     git fetch heroku 
-                //     git fetch origin
-                //     git branch -a
-                //     git push heroku HEAD:master --force
-                //  '''
-                //  sleep(60)
+                 sh '''
+                    ls sources/dist
+                    heroku git:remote -a jenkins-python-flask
+                    git remote -v
+                    git fetch heroku 
+                    git fetch origin
+                    git push heroku HEAD:master --force
+                 '''
+                 sleep(60)
         }
 
     }
