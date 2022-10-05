@@ -44,7 +44,7 @@ node{
         }
     }
     finally{
-            sh "ls -la"
+            sh "ls sources"
             junit 'test-reports/results.xml'
             archiveArtifacts 'sources/dist/add2vals'
     }
