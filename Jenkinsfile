@@ -79,7 +79,7 @@ node{
                     git config --global user.name "Nabil Izzullah"
                  '''
                  sh "git remote -v"
-                 sh 'git commit -m "commit"'
+                 sh 'git commit . -m "commit"'
                  sh "git push heroku main"
             }
         }
