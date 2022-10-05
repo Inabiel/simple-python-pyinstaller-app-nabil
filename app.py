@@ -23,7 +23,7 @@ def handle_calc():
         sys = os.popen(f"./dist/add2vals {num1} {num2}").read()
         return jsonify(
             err="none",
-            test=sys.strip('\n')
+            test=sys
         )
     except ValueError:
         return jsonify(
