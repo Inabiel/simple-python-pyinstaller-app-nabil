@@ -73,6 +73,12 @@ node{
         // }
         stage("Deploy"){
           withCredentials([string(credentialsId: 'heroku-api', variable: 'TOKEN')]) {
+                 sh'''
+                 (
+                        $HEROKU_CREDENTIALS_EMAIL="nabiel.p@students.amikom.ac.id"
+                        $HEROKU_CREDENTIALS_PASSWORD="Fpbr1y83!"
+                        ) | heroku login
+                '''
                  sh '''heroku auth:token'''
             }
         }
